@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Stocks Tracker",
+    "version": "1.0",
+    "description": "App that tracks stocks changes",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "imgs/stocks-logo.png",
+        "default_title": "stocks tracker"
+    },
+    "permissions": []
+}

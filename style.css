@@ -1,0 +1,33 @@
+body {
+  width: 400px;
+  height: 500px;
+  margin: 0;
+  overflow-x: hidden;
+}
+#updatedTime {
+  font-size: 12px;
+  color: #666666;
+}
+#container {
+  margin: 16px;
+}
+.stockLine {
+  background-color: gainsboro;
+}
+.stockLineGreyBakcground {
+  background-color: #f0f0f0;
+}
+
+#stocksTable {
+  margin-top: 10px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: fill;
+  background-color: #eee;
+}
