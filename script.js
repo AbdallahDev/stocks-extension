@@ -20,15 +20,10 @@ stocks.forEach((stock, index) => {
   const stocksLineEl = document.createElement("div");
   stocksLineEl.classList.add("stockLine");
 
-  const logoEl = document.createElement("img");
-  logoEl.className = "logo";
-  logoEl.src = stock.logoUrl;
-  logoEl.alt = stock.name;
+  if (index % 2 == 0) stocksLineEl.style.backgroundColor = "#F0F0F0";
 
-  const nameAndTickerDivEl = document.createElement("div");
-  nameAndTickerDivEl.className = "nameAndTicker";
+  stocksLineEl.innerHTML = `<img src="${stock.logoUrl}" alt="${stock.name}" class="logo">`;
 
-  stocksLineEl.appendChild(logoEl);
   stocksTableEl.appendChild(stocksLineEl);
 });
 

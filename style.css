@@ -12,12 +12,10 @@ body {
   margin: 16px;
 }
 .stockLine {
-  background-color: gainsboro;
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
-.stockLineGreyBakcground {
-  background-color: #f0f0f0;
-}
-
 #stocksTable {
   margin-top: 10px;
   width: 100%;
