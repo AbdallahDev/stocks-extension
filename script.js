@@ -1,29 +1,35 @@
 import { stocks } from "./stocks.js";
 
-const now = new Date();
 const containerEl = document.getElementById("container");
 const updatedTimeEl = document.createElement("div");
-const formattedTime = now.toLocaleString("en-JO", {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-});
 
-updatedTimeEl.id = "updatedTime";
-updatedTimeEl.textContent = "Updated " + formattedTime;
-containerEl.appendChild(updatedTimeEl);
+renderApp();
+// setInterval(renderApp, 5000);
 
-const stocksTableEl = document.createElement("div");
-stocksTableEl.id = "stocksTable";
+function renderApp() {
+  const now = new Date();
+  const formattedTime = now.toLocaleString("en-JO", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  updatedTimeEl.innerHTML = `<div id="updatedTime">Updated ${formattedTime}</div>`;
 
-stocks.forEach((stock, index) => {
-  const stocksLineEl = document.createElement("div");
-  stocksLineEl.classList.add("stockLine");
+  containerEl.innerHTML = updatedTimeEl.innerHTML + renderStocksTable();
+}
 
-  if (index % 2 == 0) stocksLineEl.style.backgroundColor = "#F0F0F0";
+function renderStocksTable() {
+  const stocksTableEl = document.createElement("div");
+  stocksTableEl.id = "stocksTable";
 
-  //this code makes the stock line html
-  stocksLineEl.innerHTML = `
+  stocks.forEach((stock, index) => {
+    const stocksLineEl = document.createElement("div");
+    stocksLineEl.classList.add("stockLine");
+
+    if (index % 2 == 0) stocksLineEl.style.backgroundColor = "#F0F0F0";
+
+    //this code makes the stock line html
+    stocksLineEl.innerHTML = `
   <div class="logoAndNameAndTicker">
     <img src="${stock.logoUrl}" alt="${stock.name}" class="logo">
     <div class="nameAndTicker">
@@ -46,8 +52,11 @@ stocks.forEach((stock, index) => {
     </div>
   </div>`;
 
-  stocksTableEl.appendChild(stocksLineEl);
-});
+    stocksTableEl.appendChild(stocksLineEl);
+  });
+
+  return stocksTableEl.innerHTML;
+}
 
 function setChangeColor(changeValue) {
   if (changeValue > 0) return "#2E7D2E";
@@ -60,5 +69,3 @@ function setChangeSign(changeValue) {
     return "+";
   } else return "";
 }
-
-containerEl.appendChild(stocksTableEl);

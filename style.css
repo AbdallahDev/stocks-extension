@@ -9,6 +9,7 @@ body {
 #updatedTime {
   font-size: 12px;
   color: #666666;
+  margin-bottom: 9px;
 }
 #container {
   margin: 16px;
