@@ -1,4 +1,4 @@
-import { stocks } from "./stocks.js";
+import { getStocks } from "./stocks.js";
 
 const containerEl = document.getElementById("container");
 const updatedTimeEl = document.createElement("div");
@@ -7,6 +7,7 @@ renderApp();
 setInterval(renderApp, 5000);
 
 function renderApp() {
+  const stocks = getStocks();
   const now = new Date();
   const formattedTime = now.toLocaleString("en-JO", {
     hour: "2-digit",
@@ -15,10 +16,10 @@ function renderApp() {
   });
   updatedTimeEl.innerHTML = `<div id="updatedTime">Updated ${formattedTime}</div>`;
 
-  containerEl.innerHTML = updatedTimeEl.innerHTML + renderStocksTable();
+  containerEl.innerHTML = updatedTimeEl.innerHTML + renderStocksTable(stocks);
 }
 
-function renderStocksTable() {
+function renderStocksTable(stocks) {
   const stocksTableEl = document.createElement("div");
   stocksTableEl.id = "stocksTable";
 
@@ -58,14 +59,10 @@ function renderStocksTable() {
   return stocksTableEl.innerHTML;
 }
 
-function setChangeColor(changeValue) {
-  if (changeValue > 0) return "#2E7D2E";
-  else if (changeValue < 0) return "#D93E30";
-  else return "#888888";
+function setChangeSign(changeValue) {
+  return changeValue > 0 ? "+" : " ";
 }
 
-function setChangeSign(changeValue) {
-  if (changeValue > 0) {
-    return "+";
-  } else return "";
+function setChangeColor(changeValue) {
+  return changeValue > 0 ? "#2E7D2E" : changeValue < 0 ? "#D93E30" : "#888888";
 }
