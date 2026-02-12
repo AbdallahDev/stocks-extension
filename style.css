@@ -31,7 +31,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: unset;
   background-color: #eee;
   margin-right: 5px;
 }
@@ -51,6 +51,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: end;
+  height: 34px;
+  justify-content: space-between;
 }
 .priceAndCurrency {
   display: flex;

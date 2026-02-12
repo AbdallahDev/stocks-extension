@@ -37,12 +37,28 @@ stocks.forEach((stock, index) => {
       <div class="currency">${stock.currency}</div>
     </div>
     <div class="changePriceAndPercent">
-      <div class="changePrice">${stock.change_price}</div>
-      <div class="changePercent">${stock.change_percent}</div>
+      <div class="changePrice" style="color:${setChangeColor(stock.change_price)};">
+        ${setChangeSign(stock.change_price)}${stock.change_price}
+      </div>
+      <div class="changePercent" style="color:${setChangeColor(stock.change_percent)};">
+        ${setChangeSign(stock.change_percent)}${stock.change_percent}%
+      </div>
     </div>
   </div>`;
 
   stocksTableEl.appendChild(stocksLineEl);
 });
+
+function setChangeColor(changeValue) {
+  if (changeValue > 0) return "#2E7D2E";
+  else if (changeValue < 0) return "#D93E30";
+  else return "#888888";
+}
+
+function setChangeSign(changeValue) {
+  if (changeValue > 0) {
+    return "+";
+  } else return "";
+}
 
 containerEl.appendChild(stocksTableEl);
