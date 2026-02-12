@@ -4,7 +4,7 @@ const containerEl = document.getElementById("container");
 const updatedTimeEl = document.createElement("div");
 
 renderApp();
-// setInterval(renderApp, 5000);
+setInterval(renderApp, 5000);
 
 function renderApp() {
   const now = new Date();
