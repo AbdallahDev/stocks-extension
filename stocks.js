@@ -8,7 +8,8 @@ export function getStocks() {
       currency: "USD",
       change_percent:
         Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1),
-      change_price: Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1),
+      change_price:
+        Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1),
     },
     {
       logoUrl: "imgs/nvidia logo.jpg",

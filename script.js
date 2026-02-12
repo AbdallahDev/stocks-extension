@@ -4,7 +4,7 @@ const containerEl = document.getElementById("container");
 const updatedTimeEl = document.createElement("div");
 
 renderApp();
-setInterval(renderApp, 5000);
+// setInterval(renderApp, 5000);
 
 function renderApp() {
   const stocks = getStocks();
@@ -24,6 +24,16 @@ function renderStocksTable(stocks) {
   stocksTableEl.id = "stocksTable";
 
   stocks.forEach((stock, index) => {
+    let {
+      logoUrl,
+      name,
+      ticker,
+      price,
+      currency,
+      change_price: changePrice,
+      change_percent: changePercent,
+    } = stock;
+
     const stocksLineEl = document.createElement("div");
     stocksLineEl.classList.add("stockLine");
 
@@ -32,23 +42,23 @@ function renderStocksTable(stocks) {
     //this code makes the stock line html
     stocksLineEl.innerHTML = `
   <div class="logoAndNameAndTicker">
-    <img src="${stock.logoUrl}" alt="${stock.name}" class="logo">
+    <img src="${logoUrl}" alt="${name}" class="logo">
     <div class="nameAndTicker">
-      <div class="name">${stock.name}</div>
-      <div class="ticker">${stock.ticker}</div>
+      <div class="name">${name}</div>
+      <div class="ticker">${ticker}</div>
     </div>
   </div>
   <div class="priceAndChange">
     <div class="priceAndCurrency">
-      <div class="price">${stock.price}</div>
-      <div class="currency">${stock.currency}</div>
+      <div class="price">${price}</div>
+      <div class="currency">${currency}</div>
     </div>
     <div class="changePriceAndPercent">
-      <div class="changePrice" style="color:${setChangeColor(stock.change_price)};">
-        ${setChangeSign(stock.change_price)}${stock.change_price}
+      <div class="changePrice" style="color:${setChangeColor(changePrice)};">
+        ${setChangeSign(changePrice)}${changePrice}
       </div>
-      <div class="changePercent" style="color:${setChangeColor(stock.change_percent)};">
-        ${setChangeSign(stock.change_percent)}${stock.change_percent}%
+      <div class="changePercent" style="color:${setChangeColor(changePercent)};">
+        ${setChangeSign(changePercent)}${changePercent}%
       </div>
     </div>
   </div>`;
