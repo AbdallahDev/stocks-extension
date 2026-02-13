@@ -4,7 +4,7 @@ const containerEl = document.getElementById("container");
 const updatedTimeEl = document.createElement("div");
 
 renderApp();
-// setInterval(renderApp, 5000);
+setInterval(renderApp, 5000);
 
 function renderApp() {
   const stocks = getStocks();
@@ -34,36 +34,36 @@ function renderStocksTable(stocks) {
       change_percent: changePercent,
     } = stock;
 
-    const stocksLineEl = document.createElement("div");
-    stocksLineEl.classList.add("stockLine");
+    const stockLineEl = document.createElement("div");
+    stockLineEl.classList.add("stockLine");
 
-    if (index % 2 == 0) stocksLineEl.style.backgroundColor = "#F0F0F0";
+    stockLineEl.style.backgroundColor = index % 2 === 0 ? "#F0F0F0" : "";
 
     //this code makes the stock line html
-    stocksLineEl.innerHTML = `
-  <div class="logoAndNameAndTicker">
-    <img src="${logoUrl}" alt="${name}" class="logo">
-    <div class="nameAndTicker">
-      <div class="name">${name}</div>
-      <div class="ticker">${ticker}</div>
-    </div>
-  </div>
-  <div class="priceAndChange">
-    <div class="priceAndCurrency">
-      <div class="price">${price}</div>
-      <div class="currency">${currency}</div>
-    </div>
-    <div class="changePriceAndPercent">
-      <div class="changePrice" style="color:${setChangeColor(changePrice)};">
-        ${setChangeSign(changePrice)}${changePrice}
-      </div>
-      <div class="changePercent" style="color:${setChangeColor(changePercent)};">
-        ${setChangeSign(changePercent)}${changePercent}%
-      </div>
-    </div>
-  </div>`;
+    stockLineEl.innerHTML = `
+        <div class="logoAndNameAndTicker">
+          <img src="${logoUrl}" alt="${name}" class="logo">
+          <div class="nameAndTicker">
+            <div class="name">${name}</div>
+            <div class="ticker">${ticker}</div>
+          </div>
+        </div>
+        <div class="priceAndChange">
+          <div class="priceAndCurrency">
+            <div class="price">${price}</div>
+            <div class="currency">${currency}</div>
+          </div>
+          <div class="changePriceAndPercent">
+            <div class="changePrice" style="color:${setChangeColor(changePrice)};">
+              ${setChangeSign(changePrice)}${changePrice}
+            </div>
+            <div class="changePercent" style="color:${setChangeColor(changePercent)};">
+              ${setChangeSign(changePercent)}${changePercent}%
+            </div>
+          </div>
+        </div>`;
 
-    stocksTableEl.appendChild(stocksLineEl);
+    stocksTableEl.appendChild(stockLineEl);
   });
 
   return stocksTableEl.innerHTML;
@@ -74,7 +74,8 @@ function setChangeSign(changeValue) {
 }
 
 function setChangeColor(changeValue) {
-  if (changeValue > 0) return "#2E7D2E";
-  else if (changeValue < 0) return "#D93E30";
-  else return "#888888";
+  // prettier-ignore
+  return changeValue > 0 ? "#2E7D2E" 
+       : changeValue < 0 ? "#D93E30" 
+       : "#888888";
 }
