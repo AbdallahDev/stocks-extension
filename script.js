@@ -74,5 +74,7 @@ function setChangeSign(changeValue) {
 }
 
 function setChangeColor(changeValue) {
-  return changeValue > 0 ? "#2E7D2E" : changeValue < 0 ? "#D93E30" : "#888888";
+  if (changeValue > 0) return "#2E7D2E";
+  else if (changeValue < 0) return "#D93E30";
+  else return "#888888";
 }
